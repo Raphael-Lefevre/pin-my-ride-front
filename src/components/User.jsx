@@ -1,4 +1,5 @@
 import {
+  Button,
   CardTitle,
   CardText,
   Container,
@@ -16,6 +17,11 @@ const User = () => {
   return (
     <Container>
       <Row className="d-flex justify-content-center">
+        <Col sm="12" className="text-center mt-4">
+          <Button color="info" tag={Link} to="/addride">
+            Ajouter un nouveau ride
+          </Button>
+        </Col>
         <Col md="6">
           <div className=" opacity mt-4">
             <Link to="/ride">
@@ -37,7 +43,7 @@ const User = () => {
               </Card>
             </Link>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 mb-4">
             <Link to="/ride">
               <Card inverse>
                 <CardImg width="100%" src={mountains} alt="Card image ride2" />
@@ -79,7 +85,7 @@ const User = () => {
               </Card>
             </Link>
           </div>
-          <div className="mt-3">
+          <div className="mt-3 mb-4">
             <Link to="/ride">
               <Card inverse>
                 <CardImg width="100%" src={mountains} alt="Card image ride" />
