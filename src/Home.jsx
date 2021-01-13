@@ -12,7 +12,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import './App.css';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -24,7 +24,7 @@ const Home = () => {
         <Col sm="12" md={{ size: 8, offset: 2 }} className="mt-4">
           <Card>
             <CardBody>
-              <CardTitle tag="h5">LOGIN</CardTitle>
+              <CardTitle tag="h5">S&apos;IDENTIFIER</CardTitle>
               <Form>
                 <FormGroup>
                   <Label for="exampleEmail">Email</Label>
@@ -36,7 +36,7 @@ const Home = () => {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="examplePassword">Password</Label>
+                  <Label for="examplePassword">Mot de passe</Label>
                   <Input
                     type="password"
                     name="password"
@@ -46,12 +46,14 @@ const Home = () => {
                 </FormGroup>
                 <FormGroup check>
                   <Label check>
-                    <Input type="checkbox" /> Remember me
+                    <Input type="checkbox" /> Se souvenir de moi
                   </Label>
                 </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>
-                  <Button color="info">Log in</Button>
+                  <Button tag={Link} to="/user" color="info">
+                    S&apos;identifier
+                  </Button>
                 </FormGroup>
               </Form>
             </CardBody>
@@ -60,11 +62,11 @@ const Home = () => {
         <Col sm="12" md={{ size: 8, offset: 2 }} className="mt-4">
           <Card body>
             <CardText>
-              Vous n&apos;avez pas encore de compte? N&apos;attendez plus
+              Vous n&apos;avez pas encore de compte? N&apos;attendez plus,
               créez-le vôtre!
             </CardText>
             <p>
-              <a href="/">Sign in</a>
+              <a href="/signin">Se connecter</a>
             </p>
           </Card>
         </Col>
