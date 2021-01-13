@@ -60,7 +60,7 @@ const Home = () => {
           </Card>
         </Col>
         <Col sm="12" md={{ size: 8, offset: 2 }} className="mt-4">
-          <Card body>
+          <Card body className="mb-4">
             <CardText>
               Vous n&apos;avez pas encore de compte? N&apos;attendez plus,
               créez-le vôtre!
