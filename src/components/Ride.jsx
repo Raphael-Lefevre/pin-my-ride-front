@@ -73,4 +73,3 @@ export default Map;
 // }
 
 // export default Ride;
-
