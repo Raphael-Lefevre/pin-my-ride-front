@@ -39,21 +39,21 @@ const AddRide = () => {
                   <Input type="textarea" name="text" id="exampleText" />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="exampleStartDate">Date de début</Label>
+                  <Label for="exampleDate">Date de début</Label>
                   <Input
-                    type="StartDate"
-                    name="StartDate"
-                    id="exampleStartDate"
-                    placeholder=""
+                    type="date"
+                    name="date"
+                    id="exampleDate"
+                    placeholder="date placeholder"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="exampleEndDate">Date de fin</Label>
+                  <Label for="exampleDate">Date de fin</Label>
                   <Input
-                    type="EndDate"
-                    name="daEndDatete"
-                    id="exampleEndDate"
-                    placeholder=""
+                    type="date"
+                    name="date"
+                    id="exampleDate"
+                    placeholder="date placeholder"
                   />
                 </FormGroup>
                 <FormGroup>
