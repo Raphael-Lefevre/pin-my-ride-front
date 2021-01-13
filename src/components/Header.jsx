@@ -7,12 +7,13 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
+  // UncontrolledDropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem,
 } from 'reactstrap';
+import { BsPersonSquare } from 'react-icons/bs';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,14 +22,21 @@ const Header = () => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Pin My Ride</NavbarBrand>
+        <NavbarBrand href="/" className="p-3">
+          LOGO
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
+            <NavbarBrand href="/user" className="m-3">
+              <BsPersonSquare size="2rem" /> Username
+            </NavbarBrand>
             <NavItem>
-              <NavLink href="/components/">Username</NavLink>
+              <NavLink href="/" className="m-3">
+                Se déconnecter
+              </NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Rides
               </DropdownToggle>
@@ -38,9 +46,9 @@ const Header = () => {
                 <DropdownItem divider />
                 <DropdownItem>Reset</DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
           </Nav>
-          <NavbarText>Log out</NavbarText>
+          <NavbarText className="font-weight-bold p-3">PIN MY RIDE</NavbarText>
         </Collapse>
       </Navbar>
     </div>

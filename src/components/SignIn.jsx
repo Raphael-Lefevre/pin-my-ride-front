@@ -11,6 +11,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   return (
@@ -86,7 +87,9 @@ const SignIn = () => {
                 </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>
-                  <Button color="info">Se connecter</Button>
+                  <Button tag={Link} to="/user" color="info">
+                    Se connecter
+                  </Button>
                 </FormGroup>
               </Form>
             </CardBody>
