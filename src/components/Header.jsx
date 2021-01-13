@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -14,6 +15,7 @@ import {
   // DropdownItem,
 } from 'reactstrap';
 import { BsPersonSquare } from 'react-icons/bs';
+import { FaPinterest } from 'react-icons/fa';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +24,8 @@ const Header = () => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/" className="p-3">
-          LOGO
+        <NavbarBrand tag={Link} to="/" className="p-3">
+          <FaPinterest size="4rem" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
