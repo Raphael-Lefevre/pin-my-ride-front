@@ -17,7 +17,7 @@ const Router = () => {
           component={User}
           header={Header}
           tokenAuth={localStorage.getItem('token')}
-          pathName="home"
+          pathName=""
         />
         <CheckAuth
           component={Ride}
