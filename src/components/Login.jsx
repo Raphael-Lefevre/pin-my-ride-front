@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import {
   Container,
   CardText,
@@ -16,12 +16,19 @@ import {
   Col,
 } from 'reactstrap';
 import { API_URL } from '../env';
+import UserContext from '../UserContext';
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [tokenJwt, setTokenJwt] = useState('');
+  const { tokenJwt, setTokenJwt } = useContext(UserContext);
   console.log(tokenJwt);
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setTokenJwt(localStorage.getItem('token'));
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     const datas = {
@@ -115,6 +122,6 @@ const Login = () => {
       </Row>
     </Container>
   );
-};
+}
 
 export default Login;

@@ -5,7 +5,7 @@ import UserContext from './UserContext';
 import Login from './components/Login';
 import SignIn from './components/SignIn';
 import User from './components/User';
-import Ride from './components/Ride';
+import RideMap from './components/Ride';
 import CheckAuth from './CheckAuth';
 import Header from './components/Header';
 
@@ -26,14 +26,14 @@ const Router = () => {
           <CheckAuth
             component={User}
             header={Header}
-            tokenAuth={localStorage.getItem('token')}
+            tokenAuth={tokenJwt}
             pathName=""
           />
           <CheckAuth
-            component={Ride}
+            component={RideMap}
             header={Header}
-            tokenAuth={localStorage.getItem('token')}
-            pathName="ride"
+            tokenAuth={tokenJwt}
+            pathName="ridemap"
           />
         </Switch>
       </UserContext.Provider>

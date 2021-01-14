@@ -1,4 +1,4 @@
-const { useHistory } = require('react-router-dom');
+import { useHistory } from 'react-router-dom';
 
 function CheckToken() {
   const history = useHistory();
@@ -10,4 +10,4 @@ function CheckToken() {
   return history.push('/user');
 }
 
-module.exports = CheckToken;
+export default CheckToken;
