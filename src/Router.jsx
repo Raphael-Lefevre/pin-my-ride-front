@@ -1,23 +1,31 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Layout from './Layout';
-import Login from './Login';
+import Login from './components/Login';
+import SignIn from './components/SignIn';
 import User from './components/User';
 import Ride from './components/Ride';
-import SignIn from './components/SignIn';
-import AddRide from './components/AddRide';
+import CheckAuth from './CheckAuth';
+import Header from './components/Header';
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <Layout>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/user" component={User} />
-          <Route exact path="/ride" component={Ride} />
-          <Route exact path="/addride" component={AddRide} />
-        </Switch>
-      </Layout>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signin" component={SignIn} />
+        <CheckAuth
+          component={User}
+          header={Header}
+          tokenAuth={localStorage.getItem('token')}
+          pathName="home"
+        />
+        <CheckAuth
+          component={Ride}
+          header={Header}
+          tokenAuth={localStorage.getItem('token')}
+          pathName="ride"
+        />
+      </Switch>
     </BrowserRouter>
   );
 };

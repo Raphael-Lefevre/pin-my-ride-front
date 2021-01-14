@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import { useState } from 'react';
 import {
@@ -14,12 +15,13 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import { API_URL } from './env';
+import { API_URL } from '../env';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [localStorage, setLocalStorage] = useState('');
+  const [tokenJwt, setTokenJwt] = useState('');
+  console.log(tokenJwt);
 
   const handleSubmit = (e) => {
     const datas = {
@@ -30,7 +32,8 @@ const Login = () => {
     axios
       .post(`${API_URL}/login`, datas)
       .then((response) => {
-        setLocalStorage(response.data.token);
+        setTokenJwt(response.data.token);
+        localStorage.setItem('token', response.data.token);
         axios.interceptors.request.use(
           (config) => {
             const { origin } = new URL(config.url);

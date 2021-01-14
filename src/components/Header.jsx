@@ -9,10 +9,6 @@ import {
   NavItem,
   NavLink,
   NavbarText,
-  // UncontrolledDropdown,
-  // DropdownToggle,
-  // DropdownMenu,
-  // DropdownItem,
 } from 'reactstrap';
 import { BsPersonSquare } from 'react-icons/bs';
 import { FaPinterest } from 'react-icons/fa';
@@ -38,17 +34,6 @@ const Header = () => {
                 Se déconnecter
               </NavLink>
             </NavItem>
-            {/* <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Rides
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Ride 1</DropdownItem>
-                <DropdownItem>Ride 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown> */}
           </Nav>
           <NavbarText className="font-weight-bold p-3">PIN MY RIDE</NavbarText>
         </Collapse>
