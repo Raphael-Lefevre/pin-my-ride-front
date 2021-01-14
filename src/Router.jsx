@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import UserContext from './UserContext';
 import Login from './components/Login';
 import SignIn from './components/SignIn';
 import User from './components/User';
@@ -8,24 +10,33 @@ import CheckAuth from './CheckAuth';
 import Header from './components/Header';
 
 const Router = () => {
+  const [tokenJwt, setTokenJwt] = useState('');
+
   return (
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signin" component={SignIn} />
-        <CheckAuth
-          component={User}
-          header={Header}
-          tokenAuth={localStorage.getItem('token')}
-          pathName=""
-        />
-        <CheckAuth
-          component={Ride}
-          header={Header}
-          tokenAuth={localStorage.getItem('token')}
-          pathName="ride"
-        />
-      </Switch>
+      <UserContext.Provider
+        value={{
+          tokenJwt,
+          setTokenJwt,
+        }}
+      >
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signin" component={SignIn} />
+          <CheckAuth
+            component={User}
+            header={Header}
+            tokenAuth={localStorage.getItem('token')}
+            pathName=""
+          />
+          <CheckAuth
+            component={Ride}
+            header={Header}
+            tokenAuth={localStorage.getItem('token')}
+            pathName="ride"
+          />
+        </Switch>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 };
