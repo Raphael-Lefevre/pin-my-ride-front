@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
 import LayoutedRoutes from './LayoutedRoutes';
 import Login from './components/Login';
 
@@ -10,7 +11,7 @@ function CheckAuth({
 }) {
   return (
     <>
-      {!token ? (
+      {token ? (
         <LayoutedRoutes
           component={Component}
           header={Header}

@@ -10,6 +10,7 @@ function LayoutedRoutes({
 }) {
   return (
     <Route
+      exact
       path={`/${PathName}`}
       {...rest}
       render={(props) => {
