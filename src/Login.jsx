@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { useState } from 'react';
 import {
   Container,
   CardText,
@@ -12,9 +14,44 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { API_URL } from './env';
 
-const Home = () => {
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [localStorage, setLocalStorage] = useState('');
+
+  const handleSubmit = (e) => {
+    const datas = {
+      email,
+      password,
+    };
+    e.preventDefault();
+    axios
+      .post(`${API_URL}/login`, datas)
+      .then((response) => {
+        setLocalStorage(response.data.token);
+        axios.interceptors.request.use(
+          (config) => {
+            const { origin } = new URL(config.url);
+            const allowedOrigins = ['http://localhost:5000'];
+            const token = localStorage.getItem('token');
+            if (allowedOrigins.includes(origin)) {
+              // eslint-disable-next-line no-param-reassign
+              config.headers.authorization = `Bearer ${token}`;
+            }
+            return config;
+          },
+          (error) => {
+            return Promise.reject(error);
+          }
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Container>
       <Row>
@@ -25,23 +62,25 @@ const Home = () => {
           <Card>
             <CardBody>
               <CardTitle tag="h5">S&apos;IDENTIFIER</CardTitle>
-              <Form>
+              <Form method="post" onSubmit={(e) => handleSubmit(e)}>
                 <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
+                  <Label htmlFor="email">Email</Label>
                   <Input
                     type="email"
                     name="email"
                     id="exampleEmail"
                     placeholder=""
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="examplePassword">Mot de passe</Label>
+                  <Label htmlFor="password">Mot de passe</Label>
                   <Input
                     type="password"
                     name="password"
                     id="examplePassword"
                     placeholder=""
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </FormGroup>
                 <FormGroup check>
@@ -51,7 +90,7 @@ const Home = () => {
                 </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>
-                  <Button tag={Link} to="/user" color="info">
+                  <Button type="submit" color="info">
                     S&apos;identifier
                   </Button>
                 </FormGroup>
@@ -66,7 +105,7 @@ const Home = () => {
               créez-le vôtre!
             </CardText>
             <p>
-              <a href="/signin">Se connecter</a>
+              <a href="/signin">S&apos;inscrire</a>
             </p>
           </Card>
         </Col>
@@ -75,4 +114,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Login;
