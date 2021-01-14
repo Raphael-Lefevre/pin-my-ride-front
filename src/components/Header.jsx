@@ -1,21 +1,50 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import {
+  Button,
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   NavbarText,
 } from 'reactstrap';
 import { BsPersonSquare } from 'react-icons/bs';
 import { FaPinterest } from 'react-icons/fa';
+import UserContext from '../UserContext';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const { tokenJwt, setTokenJwt } = useContext(UserContext);
+  console.log(tokenJwt);
+
+  const history = useHistory();
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+
+    axios.interceptors.request.use(
+      (config) => {
+        const { origin } = new URL(config.url);
+        const allowedOrigins = ['http://localhost:5000'];
+        if (allowedOrigins.includes(origin)) {
+          // eslint-disable-next-line no-param-reassign
+          config.headers.authorization = '';
+          // eslint-disable-next-line no-param-reassign
+          config.headers.userId = '';
+        }
+        return config;
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    );
+    setTokenJwt('');
+    history.push('/');
+  };
 
   return (
     <div>
@@ -30,9 +59,14 @@ const Header = () => {
               <BsPersonSquare size="2rem" /> Username
             </NavbarBrand>
             <NavItem>
-              <NavLink href="/" className="m-3">
+              {/* <NavLink className="m-3">Se déconnecter</NavLink> */}
+              <Button
+                color="outline-info"
+                className="m-3"
+                onClick={() => handleSignOut()}
+              >
                 Se déconnecter
-              </NavLink>
+              </Button>
             </NavItem>
           </Nav>
           <NavbarText className="font-weight-bold p-3">PIN MY RIDE</NavbarText>
