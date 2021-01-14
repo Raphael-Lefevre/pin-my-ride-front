@@ -23,7 +23,7 @@ const SignIn = () => {
         <Col sm="12" md={{ size: 8, offset: 2 }} className="mt-4">
           <Card className="mb-4">
             <CardBody>
-              <CardTitle tag="h5">SE CONNECTER </CardTitle>
+              <CardTitle tag="h5">S&apos;INSCRIRE</CardTitle>
               <Form>
                 <FormGroup>
                   <Label for="exampleUserFirstname">Prénom</Label>
@@ -88,7 +88,7 @@ const SignIn = () => {
                 <hr className="my-2" />
                 <FormGroup>
                   <Button tag={Link} to="/user" color="info">
-                    Se connecter
+                    S&apos;inscrire
                   </Button>
                 </FormGroup>
               </Form>
