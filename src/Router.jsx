@@ -9,8 +9,6 @@ import RideMap from './components/Ride';
 import Ride2Map from './components/Ride2';
 import CheckAuth from './CheckAuth';
 import Header from './components/Header';
-import User from './components/User';
-import RideMap from './components/Ride';
 import AddRide from './components/AddRide';
 
 const Router = () => {
