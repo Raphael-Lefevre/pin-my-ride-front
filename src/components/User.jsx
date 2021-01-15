@@ -24,7 +24,7 @@ const User = () => {
         </Col>
         <Col md="6">
           <div className=" opacity mt-4">
-            <Link to="/ride">
+            <Link to="/ridemap">
               <Card inverse>
                 <CardImg width="100%" src={mountains} alt="Card image ride1" />
                 <CardImgOverlay>
@@ -44,7 +44,7 @@ const User = () => {
             </Link>
           </div>
           <div className="mt-3 mb-4">
-            <Link to="/ride">
+            <Link to="/ridemap">
               <Card inverse>
                 <CardImg width="100%" src={mountains} alt="Card image ride2" />
                 <CardImgOverlay>
@@ -66,7 +66,7 @@ const User = () => {
         </Col>
         <Col md="6">
           <div className="mt-4">
-            <Link to="/ride">
+            <Link to="/ridemap">
               <Card inverse>
                 <CardImg width="100%" src={mountains} alt="Card image ride" />
                 <CardImgOverlay>
@@ -86,7 +86,7 @@ const User = () => {
             </Link>
           </div>
           <div className="mt-3 mb-4">
-            <Link to="/ride">
+            <Link to="/ridemap">
               <Card inverse>
                 <CardImg width="100%" src={mountains} alt="Card image ride" />
                 <CardImgOverlay>

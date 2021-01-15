@@ -11,6 +11,7 @@ import Header from './components/Header';
 
 const Router = () => {
   const [tokenJwt, setTokenJwt] = useState('');
+  const [email, setEmail] = useState('');
 
   return (
     <BrowserRouter>
@@ -18,6 +19,8 @@ const Router = () => {
         value={{
           tokenJwt,
           setTokenJwt,
+          email,
+          setEmail,
         }}
       >
         <Switch>
