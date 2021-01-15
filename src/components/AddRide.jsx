@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { useState, useContext } from 'react';
 import {
   Container,
   Card,
@@ -11,9 +13,43 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { API_URL } from '../env';
+import UserContext from '../UserContext';
+
+const initialValues = {
+  label: '',
+  summary: '',
+  lat: '',
+  long: '',
+  user_id: '',
+};
 
 const AddRide = () => {
+  const [values, setValues] = useState(initialValues);
+  const { user } = useContext(UserContext);
+
+  console.log(user);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+    console.log({ setValues });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`${API_URL}/rides`, { setValues })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <Container>
       <Row>
@@ -24,54 +60,42 @@ const AddRide = () => {
           <Card className="mb-4">
             <CardBody>
               <CardTitle tag="h5">Créer un nouveau ride</CardTitle>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <FormGroup>
                   <Label for="exampleRideLabel">Nom</Label>
                   <Input
-                    type="RideLabel"
-                    name="RideLabel"
+                    type="Label"
+                    name="label"
                     id="exampleRideLabel"
                     placeholder=""
+                    value={values.label}
+                    onChange={handleInputChange}
                   />
                 </FormGroup>
                 <FormGroup>
                   <Label for="exampleText">Description</Label>
-                  <Input type="textarea" name="text" id="exampleText" />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="exampleDate">Date de début</Label>
                   <Input
-                    type="date"
-                    name="date"
-                    id="exampleDate"
-                    placeholder="date placeholder"
+                    type="textarea"
+                    name="summary"
+                    id="exampleText"
+                    value={values.summary}
+                    onChange={handleInputChange}
                   />
                 </FormGroup>
+
                 <FormGroup>
-                  <Label for="exampleDate">Date de fin</Label>
-                  <Input
-                    type="date"
-                    name="date"
-                    id="exampleDate"
-                    placeholder="date placeholder"
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="exampleCoordinates">
-                    Coordonnées géo de départ
-                  </Label>
-                  <Input
-                    type="Coordinates"
-                    name="Coordinates"
-                    id="exampleCoordinates"
-                    placeholder=""
-                  />
+                  <Label for="exampleSelect">Ville de départ</Label>
+                  <Input type="select" name="select" id="exampleSelect">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Input>
                 </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>
-                  <Button tag={Link} to="/user" color="info">
-                    Créer
-                  </Button>
+                  <Button color="info">Créer</Button>
                 </FormGroup>
               </Form>
             </CardBody>

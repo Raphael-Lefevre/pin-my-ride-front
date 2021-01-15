@@ -1,50 +1,27 @@
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {
-  Button,
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavbarText,
-} from 'reactstrap';
-import { BsPersonSquare } from 'react-icons/bs';
-import { FaPinterest } from 'react-icons/fa';
 import UserContext from '../UserContext';
+import { API_URL } from '../env';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-  const { tokenJwt, setTokenJwt } = useContext(UserContext);
+  const { tokenJwt, setTokenJwt, user, setUser, email, setEmail  } = useContext(UserContext);
   console.log(tokenJwt);
 
   const history = useHistory();
 
-  const handleSignOut = () => {
-    localStorage.removeItem('token');
 
-    axios.interceptors.request.use(
-      (config) => {
-        const { origin } = new URL(config.url);
-        const allowedOrigins = ['http://localhost:5000'];
-        if (allowedOrigins.includes(origin)) {
-          // eslint-disable-next-line no-param-reassign
-          config.headers.authorization = '';
-          // eslint-disable-next-line no-param-reassign
-          config.headers.userId = '';
-        }
-        return config;
-      },
-      (error) => {
-        return Promise.reject(error);
-      }
-    );
-    setTokenJwt('');
-    history.push('/');
-  };
+  useEffect(() => {
+    axios.get(`${API_URL}/users`).then((res) => {
+      console.log(res.data);
+      const currentUser = res.data.filter((user)=> {
+        return user
+      })
+  
+  }, [media]);
+    });
+  }, []);
 
   return (
     <div>
@@ -56,7 +33,8 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavbarBrand href="/user" className="m-3">
-              <BsPersonSquare size="2rem" /> Username
+              <BsPersonSquare size="2rem" />
+              Username {user.firstname}
             </NavbarBrand>
             <NavItem>
               {/* <NavLink className="m-3">Se déconnecter</NavLink> */}

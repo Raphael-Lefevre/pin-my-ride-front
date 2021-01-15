@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import axios from 'axios';
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import {
   Container,
   CardText,
@@ -19,9 +19,16 @@ import { API_URL } from '../env';
 import UserContext from '../UserContext';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { tokenJwt, setTokenJwt } = useContext(UserContext);
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const {
+    tokenJwt,
+    setTokenJwt,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useContext(UserContext);
   console.log(tokenJwt);
 
   useEffect(() => {

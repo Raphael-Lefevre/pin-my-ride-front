@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Button,
   CardTitle,
@@ -9,8 +10,9 @@ import {
   CardImg,
   CardImgOverlay,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+
 import mountains from '../images/mountains.jpg';
+
 // import './User.css';
 
 const User = () => {
