@@ -94,11 +94,6 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </FormGroup>
-                <FormGroup check>
-                  <Label check>
-                    <Input type="checkbox" /> Se souvenir de moi
-                  </Label>
-                </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>
                   <Button type="submit" color="info">

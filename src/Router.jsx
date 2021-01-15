@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import UserContext from './UserContext';
 import Login from './components/Login';
 import SignIn from './components/SignIn';
-import User from './components/User';
-import RideMap from './components/Ride';
 import CheckAuth from './CheckAuth';
 import Header from './components/Header';
+import User from './components/User';
+import RideMap from './components/Ride';
+import AddRide from './components/AddRide';
 
 const Router = () => {
   const [tokenJwt, setTokenJwt] = useState('');
@@ -26,6 +27,8 @@ const Router = () => {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/ridemap" component={RideMap} />
+          <Route exact path="/addride" component={AddRide} />
           <CheckAuth
             component={User}
             header={Header}

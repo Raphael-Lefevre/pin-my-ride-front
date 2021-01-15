@@ -59,12 +59,11 @@ const Header = () => {
           <Nav className="mr-auto" navbar>
             <NavbarBrand href="/user" className="m-3">
               <BsPersonSquare size="3rem" />
-              {email} username
+              {email}
             </NavbarBrand>
             <NavItem>
-              {/* <NavLink className="m-3">Se déconnecter</NavLink> */}
               <Button
-                color="outline-info"
+                color="outline-dark"
                 className="m-4"
                 onClick={() => handleSignOut()}
               >
