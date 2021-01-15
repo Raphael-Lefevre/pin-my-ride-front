@@ -18,7 +18,7 @@ import UserContext from '../UserContext';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { tokenJwt, setTokenJwt, email, setProfil, profil } = useContext(
+  const { tokenJwt, setTokenJwt, email, profil, setProfil } = useContext(
     UserContext
   );
   console.log(tokenJwt);
@@ -77,7 +77,7 @@ const Header = () => {
             <NavItem>
               {/* <NavLink className="m-3">Se déconnecter</NavLink> */}
               <Button
-                color="outline-info"
+                color="outline-dark"
                 className="m-3"
                 onClick={() => handleSignOut()}
               >

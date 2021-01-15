@@ -10,10 +10,22 @@ import {
   CardImgOverlay,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import mountains from '../images/mountains.jpg';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 // import './User.css';
 
 const User = () => {
+  const [ride, setRide] = useState();
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/v0/rides/').then((responses) => {
+      const newRide = responses.data;
+      setRide(newRide);
+    });
+  }, []);
+
+  console.log(ride);
+
   return (
     <Container>
       <Row className="d-flex justify-content-center">
@@ -24,9 +36,13 @@ const User = () => {
         </Col>
         <Col md="6">
           <div className=" opacity mt-4">
-            <Link to="/ride">
+            <Link to="/ridemap">
               <Card inverse>
-                <CardImg width="100%" src={mountains} alt="Card image ride1" />
+                <CardImg
+                  width="100%"
+                  src="https://image.newyorkcity.fr/wp-content/uploads/2012/09/Times-Square-in-New-York.jpg"
+                  alt="Card image ride1"
+                />
                 <CardImgOverlay>
                   <CardTitle tag="h5">Ride 1</CardTitle>
                   <CardText>
@@ -43,12 +59,16 @@ const User = () => {
               </Card>
             </Link>
           </div>
-          <div className="mt-3 mb-4">
-            <Link to="/ride">
+          <div className="mt-4">
+            <Link to="/ride2map">
               <Card inverse>
-                <CardImg width="100%" src={mountains} alt="Card image ride2" />
+                <CardImg
+                  width="100%"
+                  src="https://sete.toureiffel.paris/themes/custom/tour_eiffel/img/societe-d-exploitation-de-la-tour-eiffel-accueil.jpg"
+                  alt="Card image ride"
+                />
                 <CardImgOverlay>
-                  <CardTitle tag="h5">Ride 2</CardTitle>
+                  <CardTitle tag="h5">Ride 3</CardTitle>
                   <CardText>
                     This is a wider card with supporting text below as a natural
                     lead-in to additional content. This content is a little bit
@@ -66,9 +86,13 @@ const User = () => {
         </Col>
         <Col md="6">
           <div className="mt-4">
-            <Link to="/ride">
+            <Link to="/ride2map">
               <Card inverse>
-                <CardImg width="100%" src={mountains} alt="Card image ride" />
+                <CardImg
+                  width="100%"
+                  src="https://sete.toureiffel.paris/themes/custom/tour_eiffel/img/societe-d-exploitation-de-la-tour-eiffel-accueil.jpg"
+                  alt="Card image ride"
+                />
                 <CardImgOverlay>
                   <CardTitle tag="h5">Ride 3</CardTitle>
                   <CardText>
@@ -85,12 +109,16 @@ const User = () => {
               </Card>
             </Link>
           </div>
-          <div className="mt-3 mb-4">
-            <Link to="/ride">
+          <div className=" opacity mt-4">
+            <Link to="/ridemap">
               <Card inverse>
-                <CardImg width="100%" src={mountains} alt="Card image ride" />
+                <CardImg
+                  width="100%"
+                  src="https://image.newyorkcity.fr/wp-content/uploads/2012/09/Times-Square-in-New-York.jpg"
+                  alt="Card image ride1"
+                />
                 <CardImgOverlay>
-                  <CardTitle tag="h5">Ride 4</CardTitle>
+                  <CardTitle tag="h5">Ride 1</CardTitle>
                   <CardText>
                     This is a wider card with supporting text below as a natural
                     lead-in to additional content. This content is a little bit

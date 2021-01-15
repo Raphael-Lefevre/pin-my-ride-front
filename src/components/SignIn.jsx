@@ -52,7 +52,7 @@ const SignIn = () => {
                     placeholder=""
                   />
                   <small id="emailHelp" className="form-text text-muted">
-                    Nous ne partagerons jamais votre e-mail avec quiconque.
+                    Nous ne partagerons votre e-mail avec personne.
                   </small>
                 </FormGroup>
                 <FormGroup>
@@ -79,11 +79,6 @@ const SignIn = () => {
                     id="examplePassword"
                     placeholder=""
                   />
-                </FormGroup>
-                <FormGroup check>
-                  <Label check>
-                    <Input type="checkbox" /> Accepter les termes et conditions
-                  </Label>
                 </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import { Redirect } from 'react-router-dom';
 import LayoutedRoutes from './LayoutedRoutes';
 import Login from './components/Login';
 
