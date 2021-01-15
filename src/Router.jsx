@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import UserContext from './UserContext';
 import Login from './components/Login';
 import SignIn from './components/SignIn';
-import CheckAuth from './CheckAuth';
-import Header from './components/Header';
 import User from './components/User';
 import RideMap from './components/Ride';
+import Ride2Map from './components/Ride2';
+import CheckAuth from './CheckAuth';
+import Header from './components/Header';
 import AddRide from './components/AddRide';
 
 const Router = () => {
@@ -30,6 +31,7 @@ const Router = () => {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/ride2map" component={Ride2Map} />
           <Route exact path="/ridemap" component={RideMap} />
           <Route exact path="/addride" component={AddRide} />
           <CheckAuth
