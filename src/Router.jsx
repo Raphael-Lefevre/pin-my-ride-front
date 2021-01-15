@@ -29,6 +29,8 @@ const Router = () => {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/ridemap" component={RideMap} />
+
           <CheckAuth
             component={User}
             header={Header}
