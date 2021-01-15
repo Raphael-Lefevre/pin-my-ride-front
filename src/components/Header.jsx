@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
   Button,
@@ -19,10 +19,27 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const { tokenJwt, setTokenJwt, email, setEmail } = useContext(UserContext);
+  const { tokenJwt, setTokenJwt, email, setProfil, profil } = useContext(
+    UserContext
+  );
   console.log(tokenJwt);
   console.log(email);
 
   const history = useHistory();
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/v0/users').then((res) => {
+      console.log(res.data);
+      console.log(email);
+      const currentUser = res.data.filter((user) => {
+        return user.email === email;
+      });
+      console.log(currentUser);
+      setProfil(currentUser);
+    });
+  }, []);
+
+  console.log('profil', profil);
 
   const handleSignOut = () => {
     localStorage.removeItem('token');

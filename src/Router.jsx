@@ -12,6 +12,7 @@ import AddRide from './components/AddRide';
 
 const Router = () => {
   const [tokenJwt, setTokenJwt] = useState('');
+  const [profil, setProfil] = useState('');
   const [email, setEmail] = useState('');
 
   return (
@@ -20,6 +21,8 @@ const Router = () => {
         value={{
           tokenJwt,
           setTokenJwt,
+          profil,
+          setProfil,
           email,
           setEmail,
         }}
