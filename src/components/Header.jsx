@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {
   Button,
@@ -18,10 +18,26 @@ import UserContext from '../UserContext';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { tokenJwt, setTokenJwt } = useContext(UserContext);
+  const { tokenJwt, setTokenJwt, email, setProfil, profil } = useContext(
+    UserContext
+  );
   console.log(tokenJwt);
 
   const history = useHistory();
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/v0/users').then((res) => {
+      console.log(res.data);
+      console.log(email);
+      const currentUser = res.data.filter((user) => {
+        return user.email === email;
+      });
+      console.log(currentUser);
+      setProfil(currentUser);
+    });
+  }, []);
+
+  console.log('profil', profil);
 
   const handleSignOut = () => {
     localStorage.removeItem('token');
@@ -56,7 +72,7 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavbarBrand href="/user" className="m-3">
-              <BsPersonSquare size="2rem" /> Username
+              <BsPersonSquare size="2rem" />
             </NavbarBrand>
             <NavItem>
               {/* <NavLink className="m-3">Se déconnecter</NavLink> */}

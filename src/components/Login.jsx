@@ -19,9 +19,8 @@ import { API_URL } from '../env';
 import UserContext from '../UserContext';
 
 function Login() {
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { tokenJwt, setTokenJwt } = useContext(UserContext);
+  const { tokenJwt, setTokenJwt, email, setEmail } = useContext(UserContext);
   console.log(tokenJwt);
 
   useEffect(() => {
