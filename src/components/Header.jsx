@@ -18,12 +18,10 @@ import UserContext from '../UserContext';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { tokenJwt, setTokenJwt, email, setEmail } = useContext(UserContext);
-  const { tokenJwt, setTokenJwt, email, setProfil, profil } = useContext(
+  const { tokenJwt, setTokenJwt, email, profil, setProfil } = useContext(
     UserContext
   );
   console.log(tokenJwt);
-  console.log(email);
 
   const history = useHistory();
 
@@ -54,7 +52,6 @@ const Header = () => {
           // eslint-disable-next-line no-param-reassign
           config.headers.userId = '';
         }
-        setEmail('');
         return config;
       },
       (error) => {
@@ -75,13 +72,13 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavbarBrand href="/user" className="m-3">
-              <BsPersonSquare size="3rem" />
-              {email}
+              <BsPersonSquare size="2rem" />
             </NavbarBrand>
             <NavItem>
+              {/* <NavLink className="m-3">Se déconnecter</NavLink> */}
               <Button
                 color="outline-dark"
-                className="m-4"
+                className="m-3"
                 onClick={() => handleSignOut()}
               >
                 Se déconnecter
