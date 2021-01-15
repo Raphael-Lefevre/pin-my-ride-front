@@ -34,6 +34,8 @@ function Login() {
       email,
       password,
     };
+    console.log(email);
+
     e.preventDefault();
     axios
       .post(`${API_URL}/login`, datas)
@@ -91,11 +93,6 @@ function Login() {
                     placeholder=""
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                </FormGroup>
-                <FormGroup check>
-                  <Label check>
-                    <Input type="checkbox" /> Se souvenir de moi
-                  </Label>
                 </FormGroup>
                 <hr className="my-2" />
                 <FormGroup>

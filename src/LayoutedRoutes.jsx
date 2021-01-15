@@ -18,6 +18,7 @@ function LayoutedRoutes({
           <>
             <Header />
             <Component {...props} />
+            {/* <div {...props}>test</div> */}
           </>
         );
       }}
