@@ -31,15 +31,9 @@ const Router = () => {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/signin" component={SignIn} />
-<<<<<<< HEAD
           <Route exact path="/addride" component={AddRide} />
           <Route exact path="/ride2map" component={Ride2Map} />
           <Route exact path="/ridemap" component={RideMap} />
-=======
-          <Route exact path="/ride2map" component={Ride2Map} />
-          <Route exact path="/ridemap" component={RideMap} />
-          <Route exact path="/addride" component={AddRide} />
->>>>>>> dev
           <CheckAuth
             component={User}
             header={Header}
